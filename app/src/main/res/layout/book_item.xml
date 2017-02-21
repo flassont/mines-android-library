@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,18 +10,42 @@
             type="mines.flassont.library.Book" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
+        style="@style/AppTheme.ListItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        tools:showIn="@layout/activity_library"
-        style="@style/AppTheme.ListItem">
+        tools:showIn="@layout/activity_library">
+
+        <ImageView
+            android:id="@+id/cover"
+            android:layout_width="50dp"
+            android:layout_height="75dp"
+            android:layout_marginEnd="10dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/book_cover_alt"
+            bind:src="@{model.cover}"
+            tools:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/text"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{model.name}"
-            tools:text="Henri Potier tome 1"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@id/cover"
+            android:text="@{model.title}"
+            tools:text="Henri Potier tome 1" />
 
-    </LinearLayout>
+        <TextView
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text"
+            android:layout_toEndOf="@id/cover"
+            android:text="@{model.price + '€'}"
+            tools:text="15€" />
+
+    </RelativeLayout>
 </layout>

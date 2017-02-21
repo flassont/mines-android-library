@@ -6,6 +6,8 @@ package mines.flassont.library
  * A book has a name and a price.
  */
 data class Book(
-        val name: String,
-        val price: Float
+        val isbn: String,
+        val title: String,
+        val price: String,
+        val cover: String
 )

@@ -37,7 +37,11 @@ dependencies {
             "com.android.support:appcompat-v7:25.1.1",
             "com.android.support:design:25.1.1",
             "com.android.support:recyclerview-v7:25.1.1",
-            "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+            "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            'com.squareup.retrofit2:retrofit:2.1.0',
+            'com.squareup.retrofit2:converter-gson:2.1.0',
+            'com.jakewharton.timber:timber:4.5.1',
+            'com.squareup.picasso:picasso:2.5.2'
     )
 
     kapt(
