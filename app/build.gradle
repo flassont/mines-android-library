@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 25
+    dataBinding.enabled true
 
     buildToolsVersion "25.0.2"
 
@@ -35,7 +36,12 @@ dependencies {
     compile(
             "com.android.support:appcompat-v7:25.1.1",
             "com.android.support:design:25.1.1",
+            "com.android.support:recyclerview-v7:25.1.1",
             "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    )
+
+    kapt(
+            "com.android.databinding:compiler:$android_plugin_version"
     )
 
     testCompile(
@@ -44,8 +50,12 @@ dependencies {
 
     androidTestCompile(
             'com.android.support.test.espresso:espresso-core:2.2.2',
-            {exclude group: 'com.android.support', module: 'support-annotations'}
+            { exclude group: 'com.android.support', module: 'support-annotations' }
     )
+}
+
+kapt {
+    generateStubs = true
 }
 
 repositories {

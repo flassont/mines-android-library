@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.ListItem" parent="AppTheme">
+        <item name="android:padding">@dimen/list_item_padding</item>
+    </style>
+
 </resources>
