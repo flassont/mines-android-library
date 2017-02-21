@@ -1,5 +1,6 @@
 package mines.flassont.library
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
@@ -34,12 +35,14 @@ class LibraryActivity : AppCompatActivity() {
                     }
 
                     override fun onResponse(call: Call<List<Book>>, response: Response<List<Book>>) {
-                        list.adapter = BookAdapter(
-                                this@LibraryActivity,
-                                response.body(),
-                                { Toast.makeText(this@LibraryActivity, it.title, Toast.LENGTH_SHORT).show() }
-                        )
+                        list.adapter = BookAdapter(this@LibraryActivity, response.body(), { onBookSelected(it) })
                     }
                 })
+    }
+
+    private infix fun onBookSelected(item: Book): Unit {
+        val intent = Intent(this, BookActivity::class.java)
+                .putExtra(BookActivity.EXTRA_BOOK, item)
+        startActivity(intent)
     }
 }
