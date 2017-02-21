@@ -10,6 +10,7 @@
 
     <style name="AppTheme.ListItem" parent="AppTheme">
         <item name="android:padding">@dimen/list_item_padding</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
     </style>
 
 </resources>

@@ -34,7 +34,11 @@ class LibraryActivity : AppCompatActivity() {
                     }
 
                     override fun onResponse(call: Call<List<Book>>, response: Response<List<Book>>) {
-                        list.adapter = BookAdapter(this@LibraryActivity, response.body())
+                        list.adapter = BookAdapter(
+                                this@LibraryActivity,
+                                response.body(),
+                                { Toast.makeText(this@LibraryActivity, it.title, Toast.LENGTH_SHORT).show() }
+                        )
                     }
                 })
     }

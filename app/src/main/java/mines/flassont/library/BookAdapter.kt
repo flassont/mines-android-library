@@ -9,9 +9,13 @@ import mines.flassont.library.databinding.BookItemBinding
 /**
  * Adapter for a RecyclerView
  */
-class BookAdapter(ctx: Context, val books: List<Book>) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
+class BookAdapter(
+        ctx: Context,
+        private val books: List<Book>,
+        var onBookSelected: ((Book) -> Unit)? = null
+) : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
-    val inflater: LayoutInflater = LayoutInflater.from(ctx)
+    private val inflater: LayoutInflater = LayoutInflater.from(ctx)
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         holder.binding.model = books[position]
@@ -22,6 +26,7 @@ class BookAdapter(ctx: Context, val books: List<Book>) : RecyclerView.Adapter<Bo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val binding = BookItemBinding.inflate(inflater, parent, false)
+        binding.root.setOnClickListener { onBookSelected?.invoke(binding.model) }
         return BookViewHolder(binding)
     }
 
