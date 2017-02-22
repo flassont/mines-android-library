@@ -23,6 +23,7 @@
         <ImageView
             android:layout_width="120dp"
             android:layout_height="160dp"
+            android:layout_weight="1"
             android:contentDescription="@string/book_cover_alt"
             bind:src="@{model.cover}" />
 
