@@ -1,4 +1,4 @@
-package mines.flassont.library
+package mines.flassont.library.activities.shared
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import mines.flassont.library.activities.book.BookActivity
+import mines.flassont.library.R
 import mines.flassont.library.databinding.BookFragmentBinding
 
 /**

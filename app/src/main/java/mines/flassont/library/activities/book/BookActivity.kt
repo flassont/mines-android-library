@@ -1,7 +1,10 @@
-package mines.flassont.library
+package mines.flassont.library.activities.book
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import mines.flassont.library.model.Book
+import mines.flassont.library.R
+import mines.flassont.library.activities.shared.BookFragment
 
 class BookActivity : AppCompatActivity() {
 

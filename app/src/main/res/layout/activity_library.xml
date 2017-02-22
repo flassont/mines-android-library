@@ -4,5 +4,5 @@
     android:id="@+id/list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".LibraryActivity"
+    tools:context=".activities.library.LibraryActivity"
     tools:listitem="@layout/book_item"/>

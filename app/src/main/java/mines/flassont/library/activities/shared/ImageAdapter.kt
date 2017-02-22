@@ -1,4 +1,4 @@
-package mines.flassont.library
+package mines.flassont.library.activities.shared
 
 import android.databinding.BindingAdapter
 import android.widget.ImageView

@@ -1,4 +1,4 @@
-package mines.flassont.library
+package mines.flassont.library.activities.library
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,11 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
+import mines.flassont.library.model.Book
+import mines.flassont.library.activities.book.BookActivity
+import mines.flassont.library.activities.shared.BookAdapter
+import mines.flassont.library.R
+import mines.flassont.library.services.HenriPotierService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

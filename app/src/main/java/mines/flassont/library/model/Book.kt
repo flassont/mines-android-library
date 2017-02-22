@@ -1,4 +1,4 @@
-package mines.flassont.library
+package mines.flassont.library.model
 
 import android.os.Parcel
 import android.os.Parcelable

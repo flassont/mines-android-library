@@ -1,5 +1,6 @@
-package mines.flassont.library
+package mines.flassont.library.services
 
+import mines.flassont.library.model.Book
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

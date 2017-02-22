@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="mines.flassont.library.Book" />
+            type="mines.flassont.library.model.Book" />
     </data>
 
     <RelativeLayout
