@@ -12,6 +12,7 @@ import mines.flassont.library.activities.book.BookActivity
 import mines.flassont.library.activities.shared.BookAdapter
 import mines.flassont.library.model.Book
 import timber.log.Timber
+import java.util.*
 
 /**
  * Activity displaying a list of books in portrait mode, and a master/detail in landscape mode.
@@ -19,7 +20,9 @@ import timber.log.Timber
 class LibraryActivity : AppCompatActivity() {
 
     private lateinit var presenter: LibraryPresenter
+
     private lateinit var list: RecyclerView
+    private var books: List<Book>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +34,25 @@ class LibraryActivity : AppCompatActivity() {
         list.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
         presenter = LibraryPresenter(this)
-        presenter.fetchBooks()
+        if (savedInstanceState == null) {
+            presenter.fetchBooks()
+        }
+    }
+
+    override fun onSaveInstanceState(state: Bundle) {
+        state.putParcelable(LIST_KEY, list.layoutManager.onSaveInstanceState())
+        state.putParcelableArrayList(LIBRARY_KEY, ArrayList(books))
+        super.onSaveInstanceState(state)
+    }
+
+    override fun onRestoreInstanceState(state: Bundle) {
+        super.onRestoreInstanceState(state)
+        setBooks(state.getParcelableArrayList<Book>(LIBRARY_KEY))
+        list.layoutManager.onRestoreInstanceState(state.getParcelable(LIST_KEY))
     }
 
     fun setBooks(books: List<Book>) {
+        this.books = books
         list.adapter = BookAdapter(this, books, { onBookSelected(it) })
     }
 
@@ -47,5 +65,10 @@ class LibraryActivity : AppCompatActivity() {
         val intent = Intent(this, BookActivity::class.java)
                 .putExtra(BookActivity.EXTRA_BOOK, item)
         startActivity(intent)
+    }
+
+    companion object {
+        private const val LIST_KEY = "mines.flassont.library/library/recycler"
+        private const val LIBRARY_KEY = "mines.flassont.library/library/data"
     }
 }
