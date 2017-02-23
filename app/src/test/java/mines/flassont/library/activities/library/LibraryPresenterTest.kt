@@ -44,7 +44,7 @@ class LibraryPresenterTest {
     @Test
     fun fetchBooksShouldCallSetBookWhenSuccess() {
         // Given
-        val expected = listOf(Book("2f02436952f", "Henri Potier à l'école des sorciers", "35", ""))
+        val expected = listOf(Book("2f02436952f", "Henri Potier à l'école des sorciers", "35", "", arrayListOf("")))
         val fromServer = Gson().toJson(expected)
         server.enqueue(MockResponse()
                 .setResponseCode(200)
