@@ -2,9 +2,9 @@ package mines.flassont.library.activities.book
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import mines.flassont.library.model.Book
 import mines.flassont.library.R
 import mines.flassont.library.activities.shared.BookFragment
+import mines.flassont.library.model.Book
 
 class BookActivity : AppCompatActivity() {
 
@@ -14,15 +14,18 @@ class BookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.book_activity)
 
-        supportActionBar?.apply {
-            title = item.title
-            setDisplayHomeAsUpEnabled(true)
-        }
+        if (resources.getBoolean(R.bool.is_landscape)) {
+            finish()
+        } else {
+            supportActionBar?.apply {
+                title = item.title
+                setDisplayHomeAsUpEnabled(true)
+            }
 
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.book_activity, BookFragment(intent.extras))
-                .disallowAddToBackStack()
-                .commit()
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.book_activity, BookFragment(intent.extras))
+                    .commit()
+        }
     }
 
     companion object {
