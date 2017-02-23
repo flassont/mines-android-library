@@ -14,9 +14,10 @@ interface HenriPotierService {
     fun listBooks(): Call<List<Book>>
 
     companion object {
+        private const val API_URL = "http://henri-potier.xebia.fr"
         fun asRetrofitService(): HenriPotierService =
                 Retrofit.Builder()
-                        .baseUrl("http://henri-potier.xebia.fr")
+                        .baseUrl(API_URL)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
                         .create(HenriPotierService::class.java)
